@@ -20,9 +20,11 @@ RUN sed -i -e "s/deb.debian/ftp.hk.debian/g" /etc/apt/sources.list \
 	libpango1.0-0 \
 	libv4l-0 \
 	fonts-symbola \
+        fonts-noto \
+        fonts-noto-cjk \
+        fonts-noto-color-emoji \
         && apt-get install -y --no-install-recommends \
-        fcitx fcitx-sunpinyin xfonts-wqy \
-        fonts-inconsolata \
+        fcitx fcitx-sunpinyin \
         fcitx-frontend-gtk3 fcitx-ui-classic \
         && apt-get purge --autoremove -y wget gnupg \
 	&& rm -rf /var/lib/apt/lists/*
@@ -30,4 +32,6 @@ RUN sed -i -e "s/deb.debian/ftp.hk.debian/g" /etc/apt/sources.list \
 ENV LANG zh_CN.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 
-ENTRYPOINT ["/usr/bin/chromium"]
+COPY entrypoint.sh /usr/bin/startchromium
+
+ENTRYPOINT ["/usr/bin/startchromium"]
