@@ -33,5 +33,6 @@ ENV LANG zh_CN.UTF-8
 ENV LC_MESSAGES en_US.UTF-8
 
 COPY entrypoint.sh /usr/bin/startchromium
+COPY vk.conf /usr/share/fcitx/data/vk.conf
 
 ENTRYPOINT ["/usr/bin/startchromium"]
