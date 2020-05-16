@@ -1,2 +1,2 @@
-startibus
+ibus-daemon -drx
 exec chromium "$@"
